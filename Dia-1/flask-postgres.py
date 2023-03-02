@@ -1,4 +1,5 @@
-from flask import Flask
+from flask import Flask, request
+from psycopg2 import connect
 
 
 app = Flask(__name__)
@@ -9,10 +10,19 @@ def inicial():
         'message': 'Bienbenido al api'
     }
 
-@app.route('/', methods=['POST'])
-def inicial():
+@app.route('/alumnos', methods=['GET', 'POST'])
+def alumnos():
+    if request.method=='GET': 
+
+        conexion = connect(host='localhost', database='pruebas', user= 'postgres', password = 'root')
+        cursor = conexion.cursor()
+
+        cursor.execute('select * from alumnos;')
+
+        resultado = cursor.fetchall()
+        print(resultado)
     return {
-        'message': 'Bienbenido al api'
+        'message': 'yo soy el get'
     }
 
 if __name__ == '__main__':
