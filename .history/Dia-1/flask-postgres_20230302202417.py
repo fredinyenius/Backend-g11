@@ -21,6 +21,9 @@ def alumnos():
         cursor.execute('select * from alumnos;')
 
         resultado = cursor.fetchall()
+
+
+
         print(resultado)
         alumnos_resultado = []
 

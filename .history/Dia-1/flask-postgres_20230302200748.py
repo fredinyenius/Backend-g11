@@ -3,7 +3,7 @@ from psycopg2 import connect
 
 app = Flask(__name__)
 
-conexion = connect(host='localhost', database='pruebas', user= 'postgres', password = 'admin')
+conexion = connect(host='localhost', database='pruebas', user= 'postgres', password = 'root')
 
 @app.route('/', methods=['GET'])
 def inicial():
@@ -21,6 +21,9 @@ def alumnos():
         cursor.execute('select * from alumnos;')
 
         resultado = cursor.fetchall()
+
+
+
         print(resultado)
         alumnos_resultado = []
 
@@ -54,26 +57,13 @@ def gestion_alumno(id):
      if request.method == 'GET':
           
           cursor = conexion.cursor()
-          cursor.execute("SELECT * FROM alumnos WHERE id %s", (id,))
+          cursor.execute("SELECT * FROM alumnos WHERE id %s", (id))
           alumnos = cursor.fetchone()
 
-          if alumnos:
-               return{
-                    'content': {
-                    'id': alumnos[0],
-                    'nombre': alumnos[1],
-                    'apellido': alumnos[2],
-                    'sexo': alumnos[3],
-                    'fecha_creacion': alumnos[4],
-                    'matriculado': alumnos[5],
-                    }
-               }
-          else:
-               return{
-                    'message': 'El alumno no existe'
-               }
-
-        
+          print(alumnos)
+          return {
+               'message': 'id'
+          }
 if __name__ == '__main__':
 
     # debug> indicar que cada vez que guardemos un archivo del proyecto el servidor se reinicie automaticamente

@@ -3,7 +3,7 @@ from psycopg2 import connect
 
 app = Flask(__name__)
 
-conexion = connect(host='localhost', database='pruebas', user= 'postgres', password = 'admin')
+conexion = connect(host='localhost', database='pruebas', user= 'postgres', password = 'root')
 
 @app.route('/', methods=['GET'])
 def inicial():
@@ -21,6 +21,9 @@ def alumnos():
         cursor.execute('select * from alumnos;')
 
         resultado = cursor.fetchall()
+
+
+
         print(resultado)
         alumnos_resultado = []
 

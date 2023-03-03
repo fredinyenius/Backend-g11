@@ -3,7 +3,7 @@ from psycopg2 import connect
 
 app = Flask(__name__)
 
-conexion = connect(host='localhost', database='pruebas', user= 'postgres', password = 'admin')
+conexion = connect(host='localhost', database='pruebas', user= 'postgres', password = 'admin', port= 5550)
 
 @app.route('/', methods=['GET'])
 def inicial():
