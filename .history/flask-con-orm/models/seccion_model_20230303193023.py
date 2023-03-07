@@ -2,10 +2,10 @@ from base_de_datos import conexion
 from sqlalchemy import Column, types
 
 
-class Nivel(conexion.Model):
+class Seccion(conexion.Model):
     id = Column(type_=types.Integer, primary_key=True, autoincrement=True)
-    numero = Column(type_=types.Integer, nullable=True, unique=True)
-    descripcion = Column(type_=types.Text)
+    nombre = Column(type_=types.Text, nullable=False)
+    alumnos = Column(type_=types.Integer, default=10)
 
     # como se llamara la tabla en la base de datos
-    __tablename__ = 'niveles'
+    __tablename__ = 'secciones'
