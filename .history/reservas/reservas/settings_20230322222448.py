@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'gestion'
 ]
 
 MIDDLEWARE = [
@@ -79,7 +78,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'reservas', # nombre  de la base de datos
         'HOST': 'localhost', # el host  donde se ubica la base de datos
-        'USER': 'postgres', # usuario de la base de tatos
+        'USER': 'postgres', # usuario de la base de atos
         'PASSWORD': 'admin',
         'PORT': 5432 # puerto de la base de datos
     }
