@@ -1,0 +1,6 @@
+django-admin startproject NOMBRE   > crea un nuevo proyecto en la nueva terminal
+python manage.py startapp NOMBRE   > crea un nueva aplicacion para el proyecto
+python manage.py runserver         > levanta el servidor de djanfo en DESARROLLO
+python manage.py showmigrations    > mostrara todas las migraciones en mi proyecto
+                                     y las que no se han ejecutado se moatrara 'vacia' [] y las  qsi [X]
+python manage.py migrate           > ejecutara todas las migraciones pendientes
