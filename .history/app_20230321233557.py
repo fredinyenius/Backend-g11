@@ -33,7 +33,7 @@ api.add_resource(RegistroController,'/registro')
 api.add_resource(ImagenesController,'/imagenes', '/imagenes/<nombre>')
 api.add_resource(CategoriasController,'/categorias')
 api.add_resource(ProductosController,'/productos')
-api.add_resource(ImagenController,'/imagen','/imagen/<nombre>')
+api.add_resource(ImagenController,'/imagen')
 
 if __name__ == '__main__':
     app.run(debug=True)
