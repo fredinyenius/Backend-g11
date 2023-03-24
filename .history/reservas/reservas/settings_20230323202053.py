@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'gestion',
-    # sirve para indicar que  ahora vamos a poder acceder a todos los recursos de DRF
+
     'rest_framework',
 ]
 

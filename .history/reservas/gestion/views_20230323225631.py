@@ -81,7 +81,7 @@ class UnaCategoriaView(APIView):
         if not categoria_encontrada:
             return Response(data={
                   'message': 'categoria no existe'
-            }, status=404)
+            })
         resultado = CategoriaSerializers(instance=categoria_encontrada)
 
         return Response(data={
@@ -95,7 +95,7 @@ class UnaCategoriaView(APIView):
         if not categoria_encontrada:
             return Response(data={
                   'message': 'categoria no existe'
-            }, status=404)
+            })
 
         data =request.data
         data_serializada = CategoriaSerializers(data=data)
@@ -123,10 +123,8 @@ class UnaCategoriaView(APIView):
         if not categoria_encontrada:
             return Response(data={
                   'message': 'categoria no existe'
-            }, status=404)
+            })
         # DELETE FROM categorias WHERE ID = ......;
-        # me retorna el total de registros eliminados en una tupla de la sgte manera
-        # (correlativo, {'modedlo' : cantidad_elementos_eliminados})
         resultado = Categoria.objects.filter(id =id).delete()
         print(resultado)
 

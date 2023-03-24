@@ -1,0 +1,48 @@
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.request import Request
+from .models import Categoria
+from .serializers import PruebaSerializers
+
+
+class PruebaView(APIView):
+    def get(self, request):
+        data = [ {
+            'nombre':'diversion',
+            'id':1
+        },
+         {
+            'nombre':'entrenimiento',
+            'id':2
+        }
+        ]
+        return Response(data = data)
+
+    def post(self, request: Request):
+        
+        print(request.data)
+        data = request.data
+        data_serializada = PruebaSerializers(data = data)
+        #retornara verdadero o faso si la data es correcta
+        resultado = data_serializada.is_valid()
+
+        if resultado is True:
+            return Response(data = {
+                'message':'Se recibio el prueba',
+            })
+        else:
+            return Response(data= {
+             'message':'La data es invalida'
+            })
+
+class CategoriaView(APIView):
+    def post(self, request: Request):
+        data = request.data
+        nueva_categoria = Categoria(nombre=data.get('nombre'), habilitado = data.get('habilitado'))
+        # save() > guarda la nueva informacion en lña base de datos de manera permanente
+        nueva_categoria.save()
+
+        return Response(data={
+            'message':'Categoria creada exitosamente',
+        })
+

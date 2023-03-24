@@ -65,72 +65,10 @@ class CategoriaView(APIView):
     def get(self, request: Request):
         categorias = Categoria.objects.all()
         # NOTA : cuando se pasa  instancias se utiliza el parametro 'instance' y cuando se pasa informacion para validar
-        #  se utiliza el parametro 'data'
+        #  se utiliza
         data_serializada = CategoriaSerializers(instance=categorias, many=True)
         print(categorias)
 
         return Response(data={
-            # convierta las instancias de la clase  en diccionario
             'content' : data_serializada.data
         })
-    
-class UnaCategoriaView(APIView):
-    def get(self, request: Request, id):
-        print(id)
-        categoria_encontrada = Categoria.objects.filter(id=id).first()
-        if not categoria_encontrada:
-            return Response(data={
-                  'message': 'categoria no existe'
-            }, status=404)
-        resultado = CategoriaSerializers(instance=categoria_encontrada)
-
-        return Response(data={
-            'content' : resultado.data
-            })
-
-    def put(self, request:Request, id):
-        
-        categoria_encontrada = Categoria.objects.filter(id=id).first()
-
-        if not categoria_encontrada:
-            return Response(data={
-                  'message': 'categoria no existe'
-            }, status=404)
-
-        data =request.data
-        data_serializada = CategoriaSerializers(data=data)
-
-        if data_serializada.is_valid():
-            categoria_encontrada.nombre = data_serializada.validated_data.get('nombre')
-            categoria_encontrada.habilitado = data_serializada.validated_data.get('habilitado')
-
-            categoria_encontrada.save()
-
-            return Response(data={
-                'message': 'Categoria actualizada'
-                } )
-        else :   
-            return Response(data={
-                'message': 'Error al actulizar la categoria',
-                'content' : data_serializada.errors
-                })
-        
-
-    def delete(self, request:Request, id):
-        
-        categoria_encontrada = Categoria.objects.filter(id=id).first()
-
-        if not categoria_encontrada:
-            return Response(data={
-                  'message': 'categoria no existe'
-            }, status=404)
-        # DELETE FROM categorias WHERE ID = ......;
-        # me retorna el total de registros eliminados en una tupla de la sgte manera
-        # (correlativo, {'modedlo' : cantidad_elementos_eliminados})
-        resultado = Categoria.objects.filter(id =id).delete()
-        print(resultado)
-
-        return Response(data={
-            'message': 'Categoria eliminada exitosamente'
-            })
-        
