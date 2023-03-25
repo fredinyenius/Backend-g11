@@ -1,10 +1,9 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.request import Request
-from rest_framework.generics import ListAPIView
 from rest_framework import status
 from .models import Categoria, Producto
-from .serializers import PruebaSerializers, CategoriaSerializers, ProductoSerializers, paginationSerializer, ProductoConCategoriaSerializers
+from .serializers import PruebaSerializers, CategoriaSerializers, ProductoSerializers, paginationSerializer
 
 
 class PruebaView(APIView):
@@ -182,22 +181,3 @@ class ProductosView(APIView):
             'content': data_serializada.data,
             'pageInfo': informacion_paginacion
         },status=status.HTTP_200_OK)
-    
-class ProductosGenericView(ListAPIView):
-    serializer_class = ProductoSerializers
-    queryset = Producto.objects.all()
-
-class UnProductoView(APIView):
-    def get(self, request:Request, id):
-        producto=Producto.objects.filter(id=id).first()
-        if not producto :
-            return Response(data={
-                'message': 'Producto no encontrado'
-            }, status=status.HTTP_404_NOT_FOUND)
-
-        resultado = ProductoConCategoriaSerializers(instance=producto)
-        
-
-        return Response(data= {
-            'content': resultado.data
-        })

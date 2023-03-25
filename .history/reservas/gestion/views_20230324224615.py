@@ -189,7 +189,7 @@ class ProductosGenericView(ListAPIView):
 
 class UnProductoView(APIView):
     def get(self, request:Request, id):
-        producto=Producto.objects.filter(id=id).first()
+        producto=Producto.objects.get(id=id).first()
         if not producto :
             return Response(data={
                 'message': 'Producto no encontrado'

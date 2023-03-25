@@ -19,16 +19,6 @@ class ProductoSerializers(serializers.ModelSerializer):
                 model = Producto
                 fields = '__all__'
 
-
-class ProductoConCategoriaSerializers(serializers.ModelSerializer):
-        class Meta:
-                model = Producto
-                fields = '__all__'
-                # depth > sirve para indicar que no solamente nos queremos quedar en este modelo sino que mediante la FK
-                # queremos acceder a "n" niveles
-                depth = 1
-
-
 def paginationSerializer(totalItems, page, perPage):
         itemsPerPage = perPage if totalItems >= perPage  else totalItems
         totalPages = ceil(totalItems/ itemsPerPage)if itemsPerPage > 0  else None 

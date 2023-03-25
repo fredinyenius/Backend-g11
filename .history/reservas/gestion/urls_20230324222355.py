@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import *
+from .views import PruebaView, CategoriaView, UnaCategoriaView, ProductosView, ProductosGenericView
 
 
 
@@ -11,7 +11,6 @@ urlpatterns = [
     path('categoria/<int:id>', UnaCategoriaView.as_view()),
     path('productos', ProductosView.as_view()),
     path('productos-generic', ProductosGenericView.as_view()),
-    path('producto/<int:id>', UnProductoView.as_view()),
     
 
 ]

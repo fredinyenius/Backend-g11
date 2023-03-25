@@ -29,7 +29,7 @@ class Producto(models.Model):
     # SET_NULL > elimina la categoria y a todos sus productos les cambia el valor de la categoria_id a NULL
     # SET_DEFAULT > elimina la categoria y de acuerdo al valor que le colocamos en default lo cambiara a ese valor
     # DO_NOTHING > No realiza ninguna accion, elimina la categoria y no hace ningun cambio en los productos, No se debe utilizar esta opcion ya que genera mala integridad de los datos
-    categoria = models.ForeignKey(to=Categoria, on_delete=models.CASCADE, db_column='categoria_id',
+    Categoria = models.ForeignKey(to=Categoria, on_delete=models.CASCADE, db_column='categoria_id',
                                   related_name='productos')
     
     class Meta:

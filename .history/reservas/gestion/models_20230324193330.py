@@ -29,16 +29,10 @@ class Producto(models.Model):
     # SET_NULL > elimina la categoria y a todos sus productos les cambia el valor de la categoria_id a NULL
     # SET_DEFAULT > elimina la categoria y de acuerdo al valor que le colocamos en default lo cambiara a ese valor
     # DO_NOTHING > No realiza ninguna accion, elimina la categoria y no hace ningun cambio en los productos, No se debe utilizar esta opcion ya que genera mala integridad de los datos
-    categoria = models.ForeignKey(to=Categoria, on_delete=models.CASCADE, db_column='categoria_id',
+    Categoria = models.ForeignKey(to=Categoria, on_delete=models.CASCADE, db_column='categoria_id',
                                   related_name='productos')
     
     class Meta:
         db_table = 'productos'
-        # vas a modificar el ordenamiento y sera primeroel nombre de manera descendente y luego
-        # si es que hay una coinciidencia en los nombres ordenara esa coincidencia basandome ahora en el 
-        # precio de manera ascendente
-        ordering = ['-nombre', 'precio']
-        # no se puede repetir la unicidad osea dos registros tengan los mismos valores de estas columnas
-        unique_together =['nombre', 'precio']
 
 
