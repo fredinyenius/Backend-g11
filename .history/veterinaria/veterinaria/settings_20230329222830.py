@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'veterinaria.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE'    : 'django.db.backends.postgresql',
-        'NAME'      : environ.get('NOMBRE_DB'),
-        'USER'      : environ.get('USER_DB'),
-        'PASSWORD'  : environ.get('PASSWORD_DB'),
-        'PORT'      : environ.get('PORT_DB')
+        'ENGINE': 'django.db.backends.posgresql',
+        'NAME': environ.get('NOMBRE_BD'),
+        'USER': environ.get('USER_BD'),
+        'PASSWORD': environ.get('PASSWORD_BD'),
+        'PORT': environ.get('PORT_BD')
     }
 }
 
