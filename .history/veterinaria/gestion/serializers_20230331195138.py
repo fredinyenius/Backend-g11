@@ -10,10 +10,4 @@ class RegistroUsuarioSerializer(ModelSerializer):
 class MascotasSerializer(ModelSerializer): 
     class Meta:
         model = Mascota  
-        fields ='__all__'
-
-    def to_representation(self, instance):
-        print(instance.foto.url)
-        representacion = super().to_representation(instance)
-        representacion['foto'] = instance.foto.url
-        return representacion   
+        fields ='__all__'    

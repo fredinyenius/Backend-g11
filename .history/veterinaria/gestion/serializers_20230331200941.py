@@ -14,6 +14,4 @@ class MascotasSerializer(ModelSerializer):
 
     def to_representation(self, instance):
         print(instance.foto.url)
-        representacion = super().to_representation(instance)
-        representacion['foto'] = instance.foto.url
-        return representacion   
+        return super().to_representation(instance)    

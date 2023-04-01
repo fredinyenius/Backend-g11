@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-w7p0g((ha$2^(bev@tkhu3x40zygr@671ljp%yox89j6ds@h=p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -157,4 +157,4 @@ SIMPLE_JWT= {
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=1, minutes=15)
 }
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = True
