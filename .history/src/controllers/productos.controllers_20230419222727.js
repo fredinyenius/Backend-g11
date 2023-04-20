@@ -1,6 +1,6 @@
 import { Prisma } from "../prisma.js";
 
-export const crearProducto = async (req, res) => {
+export const crearProducto = async (rep,res) => {
     const data = req.body;
 
     try {
